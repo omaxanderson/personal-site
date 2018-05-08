@@ -1,0 +1,30 @@
+.jumbotron-img {
+  position: fixed;
+  z-index: -1;
+}
+
+.navbar {
+  background: rgba(0,0,0,0.4);
+}
+
+/******** This z-index and the #main-header z-index need to be the same! *******/
+#header-img-container {
+  z-index: -1;
+}
+
+#main-header {
+  color: white;
+  z-index: -1;
+  font-family: 'Roboto Slab', sans-serif;
+
+  /*position: fixed;*/
+}
+
+h1 {
+  font-size: 4vw;
+}
+
+.content-section {
+  font-family: 'Roboto Slab', sans-serif;
+  font-size: 130%
+}
