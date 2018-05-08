@@ -26,5 +26,16 @@ h1 {
 
 .content-section {
   font-family: 'Roboto Slab', sans-serif;
-  font-size: 130%
+  font-size: 130%;
+
+}
+
+.bg-dark .content-section a {
+  text-decoration: none;
+  color: #EEE;
+}
+
+.bg-light .content-section a {
+  text-decoration: none;
+  color: #000;
 }
