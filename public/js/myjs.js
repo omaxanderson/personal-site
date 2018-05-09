@@ -2,8 +2,21 @@ $(document).ready(function() {
   //$('.custom_container').css('margin-top', $(".menu").outerHeight());
   setContentHeight();
   $(window).resize(setContentHeight);
+
+  // Project link hover handler
+  $('.project-link').hover(projectLinkIn, projectLinkOut);
   //$('#main-header').css('padding-top', $('.jumbotron-img').outerHeight() / 3);
 });
+
+function projectLinkIn(event) {
+  console.log('tester');
+  $(this).removeClass('text-dark');
+  $(this).addClass('bg-secondary');
+}
+function projectLinkOut(event) {
+  $(this).removeClass('bg-secondary');
+  $(this).addClass('text-dark');
+}
 
 function setContentHeight() {
   // first move custom-container down for navbar
