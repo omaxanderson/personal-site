@@ -16,12 +16,16 @@
   color: white;
   z-index: -1;
   font-family: 'Roboto Slab', sans-serif;
-
-  /*position: fixed;*/
 }
 
 h1 {
   font-size: 4vw;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 8vw;
+  }
 }
 
 .content-section {
@@ -31,6 +35,11 @@ h1 {
 
 .footer {
   font-size: 90%;
+}
+
+.project-link {
+  text-decoration: none;
+  color: #EEE;
 }
 
 /*
