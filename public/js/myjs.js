@@ -11,10 +11,11 @@ function setContentHeight() {
 
   // set the size of the header container to be equal to either the size of the image
   // or the size of the viewport
-  var height = $(window).outerHeight() < $('.jumbotron-img').outerHeight() ?
-    $(window).outerHeight() : $('.jumbotron-img').outerHeight();
+  var height = $(window).outerHeight() < $('.jumbotron-img').innerHeight() ?
+    $(window).outerHeight() : $('.jumbotron-img').innerHeight();
   $('#header-img-container').css('height', height);
 
   // position the header a third of the way down the image
-  $('#main-header').css('padding-top', $('.jumbotron-img').outerHeight() / 3);
+  // due to absolute positioning, we need to add the height of the navbar to the padding
+  $('#main-header').css('padding-top', $('.jumbotron-img').outerHeight() / 3 + $('.navbar').outerHeight());
 }
