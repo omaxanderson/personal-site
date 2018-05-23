@@ -31,4 +31,9 @@ function setContentHeight() {
   // position the header a third of the way down the image
   // due to absolute positioning, we need to add the height of the navbar to the padding
   $('#main-header').css('padding-top', $('.jumbotron-img').outerHeight() / 3 + $('.navbar').outerHeight());
+
+  // set overlay width and padding
+  $('.overlay').css('width', $('.gallery-img > img').width() + "px");
+  $('.overlay').css('margin-left', $('.gallery-img').css('padding-left'));
+
 }
