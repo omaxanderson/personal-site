@@ -11,7 +11,11 @@ router.get('/contact', (req, res) => res.sendFile('contact.html', options));
 router.get('/', (req, res) => res.render('home', {
 	showTitle: true
 }));
-router.get('/about', (req, res) => res.send('about.html', options));
-router.get('/contact', (req, res) => res.send('contact.html', options));
+router.get('/about', (req, res) => res.render('about', {
+	showTitle: true
+}));
+router.get('/contact', (req, res) => res.render('contact', {
+	showTitle: true
+}));
 
 module.exports = router;
