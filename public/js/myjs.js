@@ -6,6 +6,8 @@ $(document).ready(function() {
   // Project link hover handler
   $('.project-link').hover(projectLinkIn, projectLinkOut);
   //$('#main-header').css('padding-top', $('.jumbotron-img').outerHeight() / 3);
+
+//  setOverlayHeight();
 });
 
 function projectLinkIn(event) {
@@ -37,3 +39,12 @@ function setContentHeight() {
   $('.overlay').css('margin-left', $('.gallery-img').css('padding-left'));
 
 }
+
+/*
+function setOverlayHeight() {
+	var galleryElements = $('.gallery-img');
+	for (var i = 0; i < galleryElements.length; i++) {
+		galleryElements[i].css('height', $(galleryElements[i]).find('img')[0].outerHeight());
+	}
+}
+*/
