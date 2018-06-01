@@ -1,6 +1,31 @@
 $(document).ready(function() {
-  //$('.custom_container').css('margin-top', $(".menu").outerHeight());
+  var imageElement = document.getElementsByClassName('jumbotron-img')[0];
+
+// OPTION 1 - Prevents the error, but there is now a visible content jump
+/*
+  if (imageElement.complete) {
+	  setContentHeight();
+  } else {
+	imageElement.addEventListener('load', setContentHeight);	
+  }
+*/
+
+// OPTION 2 - Bug exists but no content jump
   setContentHeight();
+
+// OPTION 3 - Possible middle ground solution?
+/*
+$('#custom-container').css('display', 'none');
+var poll = setInterval(function() {
+	if (imageElement.naturalHeight) {
+		clearInterval(poll);
+		$('#custom-container').css('display', 'block');
+		setContentHeight();
+	}
+}, 10);
+*/
+
+
   $(window).resize(setContentHeight);
 
   // Project link hover handler
@@ -11,7 +36,6 @@ $(document).ready(function() {
 });
 
 function projectLinkIn(event) {
-  console.log('tester');
   $(this).removeClass('text-dark');
   $(this).addClass('bg-secondary');
 }

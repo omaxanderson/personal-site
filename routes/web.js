@@ -17,5 +17,17 @@ router.get('/about', (req, res) => res.render('about', {
 router.get('/contact', (req, res) => res.render('contact', {
 	showTitle: true
 }));
+router.get('/psf', (req, res) => res.render('psf', {
+	showTitle: true
+}));
+router.get('/particlesim', (req, res) => res.render('particlesim', {
+	showTitle: true
+}));
+router.get('/hqapp', (req, res) => res.render('hqapp', {
+	showTitle: true
+}));
+router.get('/dndsite', (req, res) => res.render('dndsite', {
+	showTitle: true
+}));
 
 module.exports = router;

@@ -1,0 +1,50 @@
+<div class='pt-5 content-section'>
+	<div class='row'>
+		<div class='col-sm-6 offset-sm-3'>
+			<h1 class='d-flex justify-content-center'>Parking Space Finder</h1>
+			<hr class='mt-4'>
+		</div>
+	</div>
+	<div class='row mt-4'>
+		<div class='col-sm-8 offset-sm-2'>
+			<p>The parking space finder was initially proposed to us as an app that would allow users to find a place to park in a parking garage. With our limited resources and time, we simplified it to tell users how many parking spaces are in the garage, or in a specific area of the garage.</p>
+		</div>
+	</div>
+
+	<div class='row mt-5'>
+		<div class='col-sm-6 offset-sm-3'>
+			<h3 class='d-flex justify-content-center'>Mobile App</h3>
+			<hr class='mt-4'>
+		</div>
+	</div>
+	<div class='row mt-4'>
+		<div class='col-sm-8 offset-sm-2'>
+			<p>The mobile app was developed with a very simple interface in mind. If people are using their phones in the car, we don't want them to need to put too much effort or thought into it. Therefore, we created a single-click information display that will tell you the number of spaces in the garage quickly.</p>
+
+			<p>The app made simple REST calls to the server to retrieve information about any requested garage.</p>
+		</div>
+	</div>
+
+	<div class='row mt-5'>
+		<div class='col-sm-6 offset-sm-3'>
+			<h3 class='d-flex justify-content-center'>Server</h3>
+			<hr class='mt-4'>
+		</div>
+	</div>
+	<div class='row mt-4'>
+		<div class='col-sm-8 offset-sm-2'>
+			<p>The server was created using Spring Boot and implemented a simple API and database to keep track of garage information. It was set up in a manner that allowed for customization with the number of floors, areas, and parking spots.</p>
+		</div>
+	</div>
+	<div class='row mt-5'>
+		<div class='col-sm-6 offset-sm-3'>
+			<h3 class='d-flex justify-content-center'>Hardware</h3>
+			<hr class='mt-4'>
+		</div>
+	</div>
+	<div class='row mt-4'>
+		<div class='col-sm-8 offset-sm-2'>
+			<p>My main role in the project was to get the hardware working. For me, this was a bit of a learning curve as I'd never used a Raspberry Pi or sensors before. We got Ultrasonic Sensors that calculated distances using ultrasonic waves, and uses this to determine whether or not an object was in front of the sensor. We put the sensor in the entrances and exits that allowed us to determine when cars entered and exited the garage, and then used more REST calls to send the information to the server.</p>
+		</div>
+	</div>
+</div>

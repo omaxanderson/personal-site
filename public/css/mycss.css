@@ -3,16 +3,32 @@
   z-index: -1;
 }
 
-.card-columns {
-  @include media-breakpoint-only(lg) {
-    column-count: 4;
-  }
-  @include media-breakpoint-only(xl) {
-    column-count: 5;
-  }
-  @include media-breakpoint-only(xs) {
-    column-count: 2;
-  }
+/* Bootstrap sizes 
+ * xs: 0-576
+ * sm: < 768
+ * md: < 992
+ * lg: < 1200
+ * xl: > 1200
+*/
+@media (min-width: 0px) {
+	.card-columns {
+		column-count: 2;
+	}
+}
+@media (min-width: 576px) {
+	.card-columns {
+		column-count: 2;
+	}
+}
+@media (min-width: 768px) {
+	.card-columns {
+		column-count: 3;
+	}
+}
+@media (min-width: 992px) {
+	.card-columns {
+		column-count: 3;
+	}
 }
 
 .navbar {
@@ -29,6 +45,10 @@
   color: white;
   z-index: -1;
   font-family: 'Roboto Slab', sans-serif;
+}
+
+#whoami {
+	text-align: center;
 }
 
 .img-container {
@@ -58,10 +78,11 @@
 
 .text {
   color: white;
-  font-size: 20px;
+  font-size: 2vw;
   position: absolute;
   top: 50%;
   left: 50%;
+  width:70%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   text-align: center;

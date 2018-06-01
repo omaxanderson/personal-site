@@ -1,7 +1,7 @@
 <div>
   <!-- Main header display -->
   <div id='header-img-container'>
-    <img src='images/site_skyline.jpg' class='img-fluid jumbotron-img'>
+    <img onload='setContentHeight()' src='images/site_skyline.jpg' class='img-fluid jumbotron-img' alt='Black and white image of a skyline.'>
     <h1 class='d-flex justify-content-center fixed-top' id='main-header'>{ O Maxwell Anderson }</h1>
   </div>
 
@@ -12,56 +12,57 @@
         <h2 class='d-flex justify-content-center pb-4'>Who Am I?</h2>
         <hr>
       </div>
-      <p>
+      <p id='whoami'>
         Hello! My name is Max, and I'm a recent college graduate with a strong passion for
         programming. My goal for the next few years is to get a job where I can provide meaningful
-        code. I am also trying to learn everything I can about developing great code
+        code to a great company. I am also trying to learn everything I can about developing great code.
       </p>
 
       <!-- It would be cool to provide some images of myself with a 1-2 sentence
       hover overlay that described the pic -->
-<div class='d-none'>
-      <div class='d-none d-md-block'>
+<!-- <div class='d-none'> -->
+      <div class=''>
         <div class='row mt-5'>
 
-          <div class='col-sm-3 gallery-img'>
-            <img src='images/lakewithgirls.jpg' style='width:100%' alt='placeholder image'>
+          <div class='col-4 gallery-img'>
+            <img src='images/lakewithgirls.jpg' style='width:100%' alt='My friends and I at my cabin in Minnesota'>
             <div class='overlay'>
               <div class='text'>
                 My friends and I enjoying a weekend at my cabin in northern Minnesota.
               </div>
             </div>
           </div>
-          <div class='col-sm-3 gallery-img'>
-            <img src='images/skiing.jpg' style='width:100%' alt='placeholder image'>
+          <div class='col-4 gallery-img'>
+            <img src='images/gradMom.jpg' style='width:100%' alt='My mom and I at graduation.'>
             <div class='overlay'>
               <div class='text'>
-                Skiing has been a favorite activity of mine since I was young.
+                My incredibly supportive mother and I at graduation from Miami University.
               </div>
             </div>
           </div>
-          <div class='col-sm-3 gallery-img'>
-            <img src='images/gradMom.jpg' style='width:100%' alt='placeholder image'>
+          <div class='col-4 gallery-img'>
+            <img src='images/madMN.jpg' style='width:100%' alt='My girlfriend Madeline and I at Minnehaha Falls.'>
             <div class='overlay'>
               <div class='text'>
-                My wonderful, supportive mother and I at graduation from Miami University.
-              </div>
-            </div>
-          </div>
-          <div class='col-sm-3 gallery-img'>
-            <img src='images/madMN.jpg' style='width:100%' alt='placeholder image'>
-            <div class='overlay'>
-              <div class='text'>
-                My stunning girlfriend and I at the frozen Minnehaha Falls
+                My girlfriend, Madeline, and I at the frozen Minnehaha Falls.
               </div>
             </div>
           </div>
         </div>
       </div> <!-- .d-lg-block -->
 
-      <div class='d-none d-md-block'>
+      <div class=''>
         <div class='row .hidden-sm-down'>
-          <div class='col-sm-3 gallery-img'>
+          <div class='col-4 gallery-img'>
+            <img src='images/skiing.jpg' style='width:100%' alt='An image of myself water skiing.'>
+            <div class='overlay'>
+              <div class='text'>
+                Water skiing has always been a favorite hobby of mine.
+              </div>
+            </div>
+          </div>
+	<!--
+          <div class='col-sm-4 gallery-img'>
             <img src='images/placeholder.png' style='width:100%' alt='placeholder image'>
             <div class='overlay'>
               <div class='text'>
@@ -69,14 +70,16 @@
               </div>
             </div>
           </div>
-          <div class='col-sm-3 gallery-img'>
-            <img src='images/mongoLauren.jpg' style='width:100%' alt='placeholder image'>
+	-->
+          <div class='col-4 gallery-img'>
+            <img src='images/mongoLauren.jpg' style='width:100%' alt='My dog Mongo, my sister, and I.'>
             <div class='overlay'>
               <div class='text'>
-                My dog Mongo (name credits to Mongo from Blazing Saddles)
+                My dog Mongo (name credits to Mongo from Blazing Saddles) and my sister.
               </div>
             </div>
           </div>
+	<!--
           <div class='col-sm-3 gallery-img'>
             <img src='images/placeholder.png' style='width:100%' alt='placeholder image'>
             <div class='overlay'>
@@ -85,18 +88,20 @@
               </div>
             </div>
           </div>
-          <div class='col-sm-3 gallery-img'>
-            <img src='images/madSB.jpg' style='width:100%' alt='placeholder image'>
+	-->
+          <div class='col-4 gallery-img'>
+            <img src='images/madSB.jpg' style='width:100%' alt='My girlfriend and I at the Smokey Mountains.'>
             <div class='overlay'>
               <div class='text'>
-                Madeline and I on Spring Break 2018 in the Smokey Mountains.
+                My girlfriend and I on Spring Break 2018 in the Smokey Mountains.
               </div>
             </div>
           </div>
         </div>
-</div>
+<!-- </div> -->
     </div>
   </div>
+ </div>
 
   <!-- Experience -->
   <div class='bg-dark text-light'>
@@ -109,7 +114,8 @@
       <div class='exp-section'>
         <div>
           <div>
-            <h4>Bioinformatics Intern</h4>
+            <h3>Bioinformatics Intern</h3>
+		<p class='mb-1'>US Air Force, Department of Defense</p>
             <p>
               Henry M. Jackson Foundation
             </p>
@@ -125,14 +131,14 @@
       <div class='exp-section'>
         <div class='mt-5'>
           <div>
-            <h4>Teacher's Assistant</h4>
+            <h3>Teacher's Assistant</h3>
             <p>
               Miami University
             </p>
           </div>
 
-          <p>As a teacher's assistant, I've had the pleasure of taking an active role
-            in helping the students understand and learn the course material. I've taught
+          <p>As a teacher's assistant, I had the pleasure of taking an active role
+            in helping the students understand and learn the course material. I taught
             them about relational database design, writing effective SQL queries,
             translation from ERD's to relational schemas, and more.</p>
         </div>
@@ -165,8 +171,8 @@
         <p>Experience with Windows and Linux/Unix-like systems</p>
       </div>
     </div>
-    </div>
-  </div>
+   </div>
+  </div> <!-- Close Skills -->
 
   <!-- Projects - with link to separate projects page -->
   <div class='bg-dark text-light'>
@@ -176,61 +182,67 @@
         <hr style='border-color: #777'>
       </div>
 
-      <div class='card-columns'>
+      <div class='card-columns'> <!-- Start card Columns -->
 
-        <a href='#BLOG_URL'>
-          <div class='card text-dark project-link'>
+        <a href='http://ec2-35-173-243-180.compute-1.amazonaws.com/'>
+          <div class='card d-inline-block text-dark project-link'>
             <img class='card-img-top' src='images/blog_logo.png' alt='Blog Logo image'>
             <div class='card-body'>
               <h3 class='card-title'>Blog</h3>
-              <p class='card-text'>I built myself a blog to discuss my own projects,
+              <p class='d-none d-sm-block card-text'>I built myself a blog to discuss my own projects,
                 areas I would like to know more about, and possibly provide insight
                 to others who are in a similar situation to myself.</p>
+		<p class='d-sm-none card-text'>Click for more about the blog I made!</p>
             </div>
           </div>
         </a>
 
-        <a href='#PSF_URL'>
-          <div class='card text-dark project-link'>
+        <a href='/psf'>
+          <div class='card d-inline-block text-dark project-link'>
             <img class='card-img-top' src='images/psf_placeholder.jpg' alt='Parking Space Finder image'>
             <div class='card-body'>
               <h3 class='card-title'>Parking Space Finder</h3>
-              <p class='card-text'>My senior capstone project was an application called the Parking Space Finder. It combined a mobile application, central server, and various hardware to keep track of parking spaces and display that information to users.</p>
+              <p class='d-none d-sm-inline-block card-text'>My senior capstone project was an application called the Parking Space Finder. It combined a mobile application, central server, and different hardware to keep track of parking spaces and display that information to users.</p>
+		<p class='d-inline-block d-sm-none card-text'>Click to hear more about my Senior Capstone!</p>
             </div>
           </div>
         </a>
 
-        <a href='#DND_URL'>
-          <div class='card text-dark project-link'>
-            <img class='card-img-top' src='images/dnd_site.jpg' alt=''>
-            <div class='card-body'>
-              <h3 class='card-title'>Dungeons and Dragons Helper</h3>
-              <p class='card-text'>I began creating a website that would function similarly to a social network to allow users to easily create and keep track of characters, campaigns, and groups. This project is still in progress.</p>
-            </div>
-          </div>
-        </a>
-
-        <a href='#PARTICLESIM_URL'>
-          <div class='card text-dark project-link'>
-            <img class='card-img-top' src='images/particle_sim2.png' alt=''>
-            <div class='card-body'>
-              <h3 class='card-title'>Physics Simulations</h3>
-              <p class='card-text'>Utilizing the p5 JavaScript library, I created physics simulations using real-world equations.</p>
-            </div>
-          </div>
-        </a>
-
-        <a href='#HQAPP_URL'>
-          <div class='card text-dark project-link'>
+        <a href='/hqapp'>
+          <div class='card d-inline-block text-dark project-link'>
             <img class='card-img-top' src='images/hq_screenshot.png' alt=''>
             <div class='card-body'>
               <h3 class='card-title'>HQ Trivia Helper</h3>
-              <p class='card-text'>Frustrated by my complete lack of ability to win a game of HQ, I created a simple web app that allows users to enter their choices and see real-time recommendations based on all the other users.</p>
+              <p class='d-none d-sm-inline-block card-text'>Frustrated by my complete lack of ability to win a game of HQ, I created a simple web app that allows users to enter their choices and see real-time recommendations based on all the other users.</p>
+		<p class='d-sm-none card-text'>Click for more about my HQ web application!</p>
             </div>
           </div>
         </a>
+
+        <a href='/dndsite'>
+          <div class='card d-inline-block text-dark project-link'>
+            <img class='card-img-top' src='images/dnd_site.jpg' alt=''>
+            <div class='card-body'>
+              <h3 class='card-title'>Dungeons and Dragons Helper</h3>
+              <p class='d-none d-sm-inline-block card-text'>I began creating a website that would function similarly to a social network to allow users to easily create and keep track of characters, campaigns, and groups. This project is still in progress.</p>
+		<p class='d-sm-none card-text'>Click for more info about the DnD site I'm working on!</p>
+            </div>
+          </div>
+        </a>
+
+        <a href='/particlesim'>
+          <div class='card d-inline-block text-dark project-link'>
+            <img class='card-img-top' src='images/particle_sim2.png' alt=''>
+            <div class='card-body'>
+              <h3 class='card-title'>Physics Simulations</h3>
+              <p class='d-none d-sm-inline-block card-text'>Utilizing the p5 JavaScript library, I created physics simulations using real-world physics concepts.</p>
+		<p class='d-sm-none card-text'>Learn more about the physics simulations I made!</p>
+            </div>
+          </div>
+        </a>
+	</div> <!-- Close Card column? -->
     </div>
-  </div>
+  </div> <!-- end Projects -->
 
   <!-- Education -->
   <div class='bg-light text-dark'>
@@ -240,25 +252,22 @@
         <hr>
       </div>
 
-      <div>
-
-        <!--
-        <img class='float-left' height='200px' src='images/miami_logo.jpg'>
-        -->
-
+      <div> <!-- Education Text Section -->
         <div>
+	  <!-- Maybe at some point include an image of Miami Logo -->
           <h4>Miami University</h4>
           <p>Bachelor's Degree in Computer Science</p>
         </div>
+
         <p>Graduated May 2018</p>
         <p>Areas of Interest: Web Development, High Performance Computing, Machine Learning</p>
 
-      </div>
+      </div> <!-- Close edu text -->
 
       <!-- animated progress bar? -->
 
     </div>
-  </div>
+  </div> <!-- End Education -->
 
 
   <!-- Footer -->
@@ -272,6 +281,7 @@
         <a target='_blank' href='https://www.github.com/omaxanderson'>GitHub</a></p>
       </div>
     </div>
-  </div>
+  </div> <!-- End Footer -->
 
 </div>
+
