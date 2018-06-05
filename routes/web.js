@@ -1,5 +1,17 @@
 const express = require('express');
 const router = express.Router();
+var sanitize = require('sanitize');
+
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+	host: 'localhost',
+	user: 'secretary_user',
+	password: 'secpass1',
+	database: 'secretary'
+});
+
+connection.connect();
+
 var options = {
 	root: __dirname + "/../public/"
 };
@@ -29,5 +41,23 @@ router.get('/hqapp', (req, res) => res.render('hqapp', {
 router.get('/dndsite', (req, res) => res.render('dndsite', {
 	showTitle: true
 }));
+router.get('/secretary', (req, res) => res.render('secretary', {
+	showTitle: true
+}));
+router.post('/secretary', (req, res) => {
+	// add the stuff to database
+	var max = req.sanitize(req.body.max);
+	var selected = req.sanitize(req.body.selected);
+	var rank = req.sanitize(req.body.rank);
+	connection.query("INSERT INTO score(max, selected, rank) VALUES(" + max + ", " + selected + ", " + rank + ")", function(err, rows, fields) {
+			if (err) {
+				console.log(err);
+				res.json({textStatus: "database error"});
+			} else {
+				res.json({textStatus: "success"});
+			}
+		});
+
+});
 
 module.exports = router;

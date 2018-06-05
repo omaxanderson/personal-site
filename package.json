@@ -4,8 +4,11 @@
   "description": "My personal website",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
+    "express-sanitizer": "^1.0.4",
+    "sanitize": "^2.1.0",
     "semantic-ui": "^2.3.1"
   },
   "devDependencies": {},
