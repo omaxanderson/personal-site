@@ -42,35 +42,42 @@ function nextCandidate() {
 }
 
 function selectCandidate() {
-	// figure out the max and which # candidate they chose	
-	var selected = numbers[currentQuestion - 1];
-	numbers.sort( (a,b) => { return b - a } );
+	$('#secretary-game-section').fadeOut(function() {
+			
+		// figure out the max and which # candidate they chose	
+		var selected = numbers[currentQuestion - 1];
+		numbers.sort( (a,b) => { return b - a } );
 
-	console.log(numbers);
-	var rank = 1;
-	while (selected < numbers[rank - 1]) {
-		rank++;
-	}
+		console.log(numbers);
+		var rank = 1;
+		while (selected < numbers[rank - 1]) {
+			rank++;
+		}
 
-	// lets make an ajax call here
-	sendData(selected, numbers[0], rank);
+		// lets make an ajax call here
+		sendData(selected, numbers[0], rank);
 
-	if (rank == 1) {
-		rank = "";
-	} else if (rank == 2) {
-		rank += "nd";
-	} else if (rank == 3) {
-		rank += "rd";
-	} else {
-		rank += "th";
-	}
+		if (rank == 1) {
+			rank = "";
+		} else if (rank == 2) {
+			rank += "nd";
+		} else if (rank == 3) {
+			rank += "rd";
+		} else {
+			rank += "th";
+		}
 
-	var results = "<div class='text-center'><h3>Results</h3>";
-	results += "<p>You chose a candidate with a value of " + selected + ".</p>";
-	results += "<p>The best candidate had a value of " + numbers[0] + ".</p>";
-	results += "<p>You chose the " + rank + " best candidate!</p></div>";
+		var results = "<div class='text-center'><h3 class='mb-4'>Results</h3>";
+		results += "<p>You chose a candidate with a value of " + selected + ".</p>";
+		results += "<p>The best candidate had a value of " + numbers[0] + ".</p>";
+		results += "<p>You chose the " + rank + " best candidate!</p></div>";
+		results += "<div class='d-flex justify-content-center mt-4'><button id='resetGameBtn' class='btn btn-primary'>Play Again!</button></div>";
 
-	$('#secretary-game-section').html(results);
+
+		$('#secretary-game-section').html(results);
+		$('#resetGameBtn').on('click', resetGame);
+		$('#secretary-game-section').fadeIn();
+	});
 
 }
 
@@ -89,5 +96,14 @@ function sendData(selected, max, rank) {
 			console.log("error: " + err);
 			console.log("status: " + textStatus);
 		}
+	});
+}
+
+function resetGame() {
+	$('#secretary-game-section').fadeOut(function() {
+		maxRange = -1;
+		numbers = new Array();
+		currentQuestion = 1;
+		startGame();
 	});
 }
