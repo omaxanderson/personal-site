@@ -44,6 +44,7 @@ router.get('/dndsite', (req, res) => res.render('dndsite', {
 router.get('/secretary', (req, res) => res.render('secretary', {
 	showTitle: true
 }));
+
 router.post('/secretary', (req, res) => {
 	// add the stuff to database
 	var max = req.sanitize(req.body.max);
@@ -57,7 +58,24 @@ router.post('/secretary', (req, res) => {
 				res.json({textStatus: "success"});
 			}
 		});
-
+});
+router.get('/secretaryData', (req, res) => {
+	connection.query("SELECT max, selected, rank from score", function(err, rows, fields) {
+		var rankAvg = 0;
+		var percentile = 0;
+		for (var i = 0; i < rows.length; i++) {
+			rankAvg += rows[i].rank;
+			percentile += rows[i].selected * 1.0 / rows[i].max;
+		}
+		rankAvg = rankAvg * 1.0 / rows.length;
+		percentile = percentile * 1.0 / rows.length;
+		var data = {
+			"rankAvg": rankAvg,
+			"percentileAvg": percentile,
+			"numGames": rows.length
+		};
+		res.json(data);
+	});
 });
 
 module.exports = router;

@@ -25,7 +25,10 @@ function showQuestion(num) {
 	var question = "<div class='text-center'><h3>Candidate " + num + "</h3>";
 	question += "<p style='font-size: 3em'>" + numbers[num - 1] + "</p></div>";
 	question += "<div class='d-flex justify-content-center'><button id='selectCandidateBtn' class='btn btn-success'>Select Candidate</button>";
-	question += "<button id='nextCandidateBtn' class='btn btn-secondary ml-3'>Next Candidate</button></div>";
+	if (num < 15) {
+	question += "<button id='nextCandidateBtn' class='btn btn-secondary ml-3'>Next Candidate</button>";
+	}
+	question += "</div>";
 
 	$('#secretary-game-section').html(question);
 	$('#secretary-game-section').fadeIn();
@@ -37,7 +40,11 @@ function showQuestion(num) {
 
 function nextCandidate() {
 	$('#secretary-game-section').fadeOut(() => {
-		showQuestion(++currentQuestion);
+		if (currentQuestion == 15) {
+			selectCandidate();
+		} else {
+			showQuestion(++currentQuestion);
+		}
 	});
 }
 
@@ -77,6 +84,8 @@ function selectCandidate() {
 		$('#secretary-game-section').html(results);
 		$('#resetGameBtn').on('click', resetGame);
 		$('#secretary-game-section').fadeIn();
+
+		getResults();
 	});
 
 }
@@ -105,5 +114,28 @@ function resetGame() {
 		numbers = new Array();
 		currentQuestion = 1;
 		startGame();
+	});
+	$('#secretary-results').fadeOut();
+}
+
+function getResults() {
+	$.ajax({
+		url: "/secretaryData",
+		dataType: "json",
+		success: function(resp, textStatus) {
+			// render the results
+			// lets use progress bars - maybe
+			var resultsHtml = "<div class='text-center'>";
+			resultsHtml += "<p>Average Rank: " + resp.rankAvg.toFixed(2) + "</p>";
+			resultsHtml += "<p>Average Candidate Percentile: " + (resp.percentileAvg.toFixed(3) * 100).toFixed(2) + "%</p>";
+			resultsHtml += "<p>Games Played: " + resp.numGames + "</p></div>";
+
+			$('#secretary-results').html(resultsHtml);
+			$('#secretary-results').fadeIn();
+
+		},
+		error: function(xhr, textStatus, err) {
+
+		}
 	});
 }
