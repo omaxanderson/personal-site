@@ -91,7 +91,7 @@ function selectCandidate() {
 }
 
 function sendData(selected, max, rank) {
-	var data = {"selected": selected, "max": max, "rank": rank};
+	var data = {"selected": selected, "max": max, "rank": rank, "candidateNum": currentQuestion};
 	var jsonData = JSON.stringify(data);
 	$.ajax({
 		url: "http://www.omaxwellanderson.com/secretary",
@@ -127,7 +127,9 @@ function getResults() {
 			// lets use progress bars - maybe
 			var resultsHtml = "<div class='text-center'>";
 			resultsHtml += "<p>Average Rank: " + resp.rankAvg.toFixed(2) + "</p>";
-			resultsHtml += "<p>Average Candidate Percentile: " + (resp.percentileAvg.toFixed(3) * 100).toFixed(2) + "%</p>";
+			resultsHtml += "<p>Average Candidate Percentile: " + (resp.percentileAvg.toFixed(4) * 100).toFixed(2) + "%</p>";
+			resultsHtml += "<p>Average Number of Candidates Interviewed: " + (resp.candidateNumAvg.toFixed(3)) + "</p>";
+			resultsHtml += "<p>Percent Best Candidate Chosen: " + (resp.bestAvg.toFixed(4) * 100).toFixed(2) + "%</p>";
 			resultsHtml += "<p>Games Played: " + resp.numGames + "</p></div>";
 
 			$('#secretary-results').html(resultsHtml);

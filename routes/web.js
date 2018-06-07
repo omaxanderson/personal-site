@@ -41,6 +41,9 @@ router.get('/hqapp', (req, res) => res.render('hqapp', {
 router.get('/dndsite', (req, res) => res.render('dndsite', {
 	showTitle: true
 }));
+router.get('/balatbdeawltvm', (req, res) => res.render('madeline', {
+	showTitle: true
+}));
 router.get('/secretary', (req, res) => res.render('secretary', {
 	showTitle: true
 }));
@@ -50,7 +53,8 @@ router.post('/secretary', (req, res) => {
 	var max = req.sanitize(req.body.max);
 	var selected = req.sanitize(req.body.selected);
 	var rank = req.sanitize(req.body.rank);
-	connection.query("INSERT INTO score(max, selected, rank) VALUES(" + max + ", " + selected + ", " + rank + ")", function(err, rows, fields) {
+	var candidateNum = req.sanitize(req.body.candidateNum);
+	connection.query("INSERT INTO score(max, selected, rank, candidate_num) VALUES(" + max + ", " + selected + ", " + rank + ", " + candidateNum + ")", function(err, rows, fields) {
 			if (err) {
 				console.log(err);
 				res.json({textStatus: "database error"});
@@ -60,19 +64,29 @@ router.post('/secretary', (req, res) => {
 		});
 });
 router.get('/secretaryData', (req, res) => {
-	connection.query("SELECT max, selected, rank from score", function(err, rows, fields) {
+	connection.query("SELECT max, selected, rank, candidate_num from score", function(err, rows, fields) {
 		var rankAvg = 0;
 		var percentile = 0;
+		var candidateNumAvg = 0;
+		var numBest = 0;
 		for (var i = 0; i < rows.length; i++) {
 			rankAvg += rows[i].rank;
+			if (rows[i].rank == 1) {
+				numBest++;
+			}
 			percentile += rows[i].selected * 1.0 / rows[i].max;
+			candidateNumAvg += rows[i].candidate_num;
 		}
 		rankAvg = rankAvg * 1.0 / rows.length;
 		percentile = percentile * 1.0 / rows.length;
+		candidateNumAvg = candidateNumAvg * 1.0 / rows.length;
+		numBest = numBest * 1.0 / rows.length;
 		var data = {
 			"rankAvg": rankAvg,
 			"percentileAvg": percentile,
-			"numGames": rows.length
+			"numGames": rows.length,
+			"candidateNumAvg": candidateNumAvg,
+			"bestAvg": numBest
 		};
 		res.json(data);
 	});
