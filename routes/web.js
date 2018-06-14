@@ -3,14 +3,6 @@ const router = express.Router();
 var sanitize = require('sanitize');
 
 var mysql = require('mysql');
-var connection = mysql.createConnection({
-	host: 'localhost',
-	user: 'secretary_user',
-	password: 'secpass1',
-	database: 'secretary'
-});
-
-connection.connect();
 
 var options = {
 	root: __dirname + "/../public/"
@@ -49,7 +41,16 @@ router.get('/secretary', (req, res) => res.render('secretary', {
 }));
 
 router.post('/secretary', (req, res) => {
-	// add the stuff to database
+	// Create mysql connection and query the database
+	var connection = mysql.createConnection({
+		host: 'localhost',
+		user: 'secretary_user',
+		password: 'secpass1',
+		database: 'secretary'
+	});
+
+	connection.connect();
+
 	var max = req.sanitize(req.body.max);
 	var selected = req.sanitize(req.body.selected);
 	var rank = req.sanitize(req.body.rank);
@@ -62,8 +63,19 @@ router.post('/secretary', (req, res) => {
 				res.json({textStatus: "success"});
 			}
 		});
+
+	connection.end();
 });
+
 router.get('/secretaryData', (req, res) => {
+	var connection = mysql.createConnection({
+		host: 'localhost',
+		user: 'secretary_user',
+		password: 'secpass1',
+		database: 'secretary'
+	});
+
+	connection.connect();
 	connection.query("SELECT max, selected, rank, candidate_num from score", function(err, rows, fields) {
 		var rankAvg = 0;
 		var percentile = 0;
@@ -90,6 +102,8 @@ router.get('/secretaryData', (req, res) => {
 		};
 		res.json(data);
 	});
+
+	connection.end();
 });
 
 module.exports = router;
